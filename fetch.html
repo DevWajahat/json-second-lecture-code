@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para"></p>
+    <ul id="uu"></ul>
+    <script>
+        fetch('index.json')
+        .then(function(res){
+            return res.json();
+        }).then(function(data){
+            // console.log(data)
+            for(var i in data.student){
+                for (var j in data.student[i]){
+                    var b="<li>"+i+"----"+j+"---"+data.student[i][j]+"</li>"+"<br>";
+                        document.getElementById('uu').innerHTML+=b;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

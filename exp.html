@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para"></p>
+    <script>
+        var req = new XMLHttpRequest();
+        req.open('GET', 'index.json', true);
+        req.send();
+        req.onreadystatechange = function() {
+            if (req.readyState == 4 && req.status == 200) {
+                console.log(req.responseText);
+                var b = JSON.parse(req.responseText);
+                for (var i in b.student) {
+                    for (var innerx in b.student[i]) {
+                        document.getElementById("para").innerHTML += innerx + "----" + b.student[i][innerx] + "<br>";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
